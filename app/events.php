@@ -8,7 +8,7 @@
 | Here we tell what the application should do when a specific event is triggered.
 | Those events can be Model Events (for exemple when a user is created), request
 | events or custom events.
-| hell
+| 
 */
 
 Event::listen('starting', function()
