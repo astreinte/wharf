@@ -1,5 +1,12 @@
 <?php
 
+Route::get('mail', function(){
+	return View::make('emails.newuser');
+});
+Route::get('mail2', function(){
+	return View::make('emails.reminder');
+});
+
 Route::get('/', array('as' => 'home', 'uses' => 'MainController@home'));
 
 Route::get('logout', array('as' => 'logout', 'uses' => 'UserController@logout'));
