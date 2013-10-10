@@ -68,12 +68,13 @@ Event::listen('user.created', function($user, $password, $profile)
 		'firstname' => $profile->firstname,
 		'lastname' => $profile->lastname,
 		'login' => $user->username,
-		'password' => $password
+		'password' => $password,
+        'options' => Option::first()
 	);
 	Mail::send('emails.newuser', $data, function($message) use ($data)
 	{
 		$message->from('wharfremi@gmail.com', 'Extranet Wharf');
-		$message->to('wharfremi@gmail.com', $data['firstname'].' '.$data['lastname'])->subject('Wharf Extranet : Votre compte utilisateur a été créé');
+		$message->to('wharfremi@gmail.com', $data['firstname'].' '.$data['lastname'])->subject($data['options']->site_title.' : Votre compte utilisateur a bien été créé');
 	});
 });
 
