@@ -1,0 +1,20 @@
+{
+    "name": "wharf/loadroutes",
+    "description": "",
+    "authors": [
+        {
+            "name": "wharf",
+            "email": "rolletremi@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "Wharf\\Loadroutes": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
