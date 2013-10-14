@@ -37,4 +37,9 @@ class Group extends Eloquent {
     {
         return $this->hasMany('action', 'recipient_id');
     }
+
+    public function dates()
+    {
+        return $this->hasMany('dates');
+    }
 }

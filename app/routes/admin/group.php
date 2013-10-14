@@ -25,3 +25,5 @@ Route::get('group/logo/{id}', array('as' => 'logo-group', 'uses' => 'AdminGroupC
 
 Route::post('group/logo/{id}', 'AdminGroupController@logo')
 ->where('id', '[0-9]+');
+
+Route::get('group/{id}/date/add', array('as' => 'add-date', 'uses' => 'AdminDateController@addForm'));

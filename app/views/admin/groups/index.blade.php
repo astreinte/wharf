@@ -24,6 +24,7 @@ $(document).ready(function() {
   <div class="btn-toolbar">
     <a class="btn btn-small pull-left" href="{{URL::to('group/edit/'.$group->id)}}"><i class="icon-pencil"></i>&nbsp{{Lang::get('action.edit')}}</a>
     <a class="btn btn-small pull-left" onClick="window.open(logopage,'logo','width=400, height=280');return false;" target="_blank" href="{{URL::to('group/logo/'.$group->id)}}"><i class="icon-picture"></i>&nbsp{{Lang::get('group.logo')}}</a>
+    <a class="btn btn-small pull-left" href="{{URL::route('add-date', array('id' => $group->id))}}"><i class="icon-plus-sign"></i>&nbsp{{Lang::get('date.add')}}</a>
     <a class="btn btn-danger btn-small" href="{{URL::to('group/delete/'.$group->id)}}"><i class="icon-remove icon-white"></i>&nbsp{{Lang::get('action.delete')}}</a>
   </div>
 
