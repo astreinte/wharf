@@ -10,7 +10,7 @@ Route::get('documents/project/{id}', function($id){
 
 Route::get('document/{id}', 'AdminDocumentController@document');
 
-Route::get('project/{projectid}/document/delete/{docid}', 'AdminDocumentController@delete');
+Route::get('project/{projectid}/document/delete/{docid}','AdminDocumentController@delete');
 
 // Versions
 Route::post('document/{id}/version/upload', 'AdminDocumentController@uploadVersion');

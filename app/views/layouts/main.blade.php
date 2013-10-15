@@ -11,6 +11,8 @@
 {{ HTML::style('css/checkbox.css') }}
 {{ HTML::style('css/lightbox.css') }}
 {{ HTML::style('css/redactor.css') }}
+{{ HTML::style('css/default.css') }}
+{{ HTML::style('css/default.date.css') }}
 
 <!-- Scripts-->
 {{ HTML::script('js/jquery.min.js') }}
@@ -21,6 +23,10 @@
 {{ HTML::script('js/redactor.min.js') }}
 {{ HTML::script('js/features.js') }}
 {{ HTML::script('js/main.js') }}
+{{ HTML::script('js/legacy.js') }}
+{{ HTML::script('js/picker.js') }}
+{{ HTML::script('js/picker.date.js') }}
+{{ HTML::script('js/fr_FR.js') }}
 </head>
 <body>
     <div class="header">

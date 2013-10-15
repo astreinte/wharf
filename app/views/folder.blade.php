@@ -1,13 +1,12 @@
 @extends('layouts.main')
 @section('content')
-
 <div class="well">
   {{ Breadcrumbs::render('folder', $folder) }}
 
   <ul class="data-list project-documents">
     @if($folder->parent)
-       <li class="folder"><a href="{{ URL::to( 'project/'.$folder->project->id.'/folder/'.$folder->parent->id.'/'.Str::slug($folder->parent->name) )}}">../</a></li>
-    @else
+       <li class="folder"><a href="{{ URL::route('folder', array('project' => $folder->project->id, 'folder' => $folder->parent->id, 'name' => Str::slug($folder->parent->name)))}}">../</a></li>
+    @else  
        <li class="folder"><a href="{{ URL::to( 'project/'.$folder->project->id.'/'.Str::slug($folder->project->name) )}}">../</a></li>
     @endif
 

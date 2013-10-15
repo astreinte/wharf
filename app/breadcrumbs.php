@@ -97,6 +97,10 @@ Breadcrumbs::register('group-divisions',function($breadcrumbs, $group)
 	$breadcrumbs->push(Lang::get('group.divisions'), route('group-divisions', $group->id));
 });
 
+Breadcrumbs::register('add-date', function($breadcrumbs, $group){
+	$breadcrumbs->parent('group', $group);
+	$breadcrumbs->push(Lang::get('date.add'), route('add-date', $group->id));
+});
 /**
  * Divisions
  */

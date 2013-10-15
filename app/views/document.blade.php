@@ -18,7 +18,7 @@ $(document).ready(function() {
 
         <a class="btn btn-danger btn-small" href="{{URL::to('project/'.$project->id.'/document/delete/'.$document->id)}}" style="margin-left:3px"><i class="icon-remove icon-white"></i>&nbsp{{Lang::get('action.delete')}}</a>
         <a id="upload-version" class="btn btn-small" href="#" style="margin-left:3px"><i class="icon-plus"></i>&nbsp{{Lang::get('document.add_version')}}</a>
-
+        to
         @endif
 
         @if($document->type == 'image')
@@ -111,7 +111,7 @@ $(document).ready(function() {
             @if(count($closed_d)) <a class="btn btn-small close-d" href="#"><i class="icon-folder-close"></i>&nbsp{{Lang::get('document.discussions_close')}}</a> @endif
             <div class="clearfix"></div>
         </div>
-        <a href="{{URL::to('project/'.$project->id.'/document/'.$document->id.'/discussions/add')}}" class="pull-right btn btn-small btn-success">{{Lang::get('document.create_discussion')}}</a>
+        <a href="{{URL::route('add-discussion', array('projectid' => $project->id, 'docid' => $document->id))}}" class="pull-right btn btn-small btn-success">{{Lang::get('document.create_discussion')}}</a>
         <div class="clearfix"></div>
     </div>
     <div class="discussions">
@@ -120,8 +120,7 @@ $(document).ready(function() {
                 @foreach($open_d as $discussion)
                 <li class="open">
                     <span class="small-f default d-permalink">#{{$discussion['index']}}</span>
-                    <a href="{{URL::to('document/'.$document->id.'/discussion/'.$discussion['id'])}}">{{$discussion['title']}}</a>
-
+                    <a href="{{URL::route('discussion', array('docid' => $document->id, 'did' => $discussion['id']))}}">{{$discussion['title']}}</a>
                     <p class="credits">{{Lang::get('document.discussion_open_msg', array('user' => '<span class="author">'.$discussion['user']['profile']['firstname'].' '.$discussion['user']['profile']['lastname'].'</span>', 'ago' => '&nbsp'.Short::timeAgo($discussion['created_at'])))}}
                         @if(count($discussion['comments']))<span class="count-com">{{count($discussion['comments'])}}</span> @endif
                     </p>
@@ -129,7 +128,7 @@ $(document).ready(function() {
                 @endforeach
             </ul>
             @else
-            <p class="contained default">{{Lang::get('document.discussion_none')}}&nbsp<a href="{{URL::to('project/'.$project->id.'/document/'.$document->id.'/discussions/add')}}">{{Lang::get('document.create_discussion')}}</a></p>
+            <p class="contained default">{{Lang::get('document.discussion_none')}}&nbsp<a href="{{URL::route('add-discussion', array('projectid' => $project->id, 'docid' => $document->id))}}">{{Lang::get('document.create_discussion')}}</a></p>
             @endif
 
              @if(count($closed_d))
@@ -137,7 +136,7 @@ $(document).ready(function() {
                 @foreach($closed_d as $discussion)
                 <li class="closed">
                     <span class="small-f default d-permalink">#{{$discussion['index']}}</span>
-                    <a href="{{URL::to('document/'.$document->id.'/discussion/'.$discussion['id'])}}">{{$discussion['title']}}</a>
+                    <a href="{{URL::route('discussion', array('docid' => $document->id, 'did' => $discussion['id']))}}">{{$discussion['title']}}</a>
                     <p class="credits">{{Lang::get('document.discussion_open_msg', array('user' => '<span class="author">'.$discussion['user']['profile']['firstname'].' '.$discussion['user']['profile']['lastname'].'</span>', 'ago' => '&nbsp'.Short::timeAgo($discussion['created_at'])))}}
                         @if(count($discussion['comments']))<span class="count-com">{{count($discussion['comments'])}}</span> @endif</p>
                 </li>

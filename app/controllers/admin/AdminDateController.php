@@ -15,6 +15,12 @@ class AdminDateController extends BaseController {
 		{
 			App::abort(404);
 		}
-		return View::make('admin.dates.add');
+		$with_a = User::admins()->get();
+		$with_b = $group->users;
+		return View::make('admin.dates.add')
+		->with('group', $group)
+		->with('with_a', $with_a)
+		->with('with_b', $with_b);
+
 	}
 }
