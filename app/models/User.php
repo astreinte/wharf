@@ -131,4 +131,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     {
         return $query->where('role_id', 2);
     }
+
+    public function dates()
+    {
+        return $this->hasMany('dates');
+    }
 }

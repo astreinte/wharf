@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 14 Octobre 2013 à 13:36
+-- Généré le: Mar 15 Octobre 2013 à 07:59
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.16
 
@@ -141,6 +141,22 @@ CREATE TABLE IF NOT EXISTS `dates` (
   `type` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `client_id` int(11) NOT NULL,
   `start` datetime NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `date_user`
+--
+
+CREATE TABLE IF NOT EXISTS `date_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `date_id` int(11) NOT NULL,
+  `user_id` datetime NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -631,7 +647,8 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2013_08_30_155928_create_notification_user_table', 36),
 ('2013_09_04_094737_create_options_table', 37),
 ('2013_09_04_105802_create_discussions_table', 38),
-('2013_10_14_143443_create_dates_table', 39);
+('2013_10_14_143443_create_dates_table', 39),
+('2013_10_15_095438_create_date_user_table', 40);
 
 -- --------------------------------------------------------
 
