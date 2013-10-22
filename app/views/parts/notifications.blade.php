@@ -7,12 +7,10 @@ $(document).ready(function() {
 
 </script>
 
-@if(isset($notifs['unchecked']))
-<span class="notify-count">{{count($notifs['unchecked'])}}</span> 
-@endif
-
 <div class="btn-group pull-right">
-    <a class="notify dropdown-toggle" data-toggle="dropdown" href="#"></a>
+    <a class="notify dropdown-toggle" data-toggle="dropdown" href="#">@if(isset($notifs['unchecked']))
+<span class="notify-count">{{count($notifs['unchecked'])}}</span> 
+@endif</a>
 
     @if(isset($notifs['unchecked']) || isset($notifs['checked']))
     <ul class="dropdown-menu notifications">

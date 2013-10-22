@@ -3,7 +3,7 @@
 <head>
 <title><?php if(isset($title)): echo $title.' | '; endif;?>{{$options->site_title}}</title>
 <link rel="shortcut icon" href="{{ URL::to('favicon.ico') }}">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400,700,800,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <!-- Styles -->
 {{ HTML::style('css/bootstrap.min.css') }}
 {{ HTML::style('css/bootstrap-select.min.css') }}
@@ -31,18 +31,23 @@
 <body>
     <div class="header">
         <div class="container">
-
+            <img class="logo pull-left" src="{{URL::asset('img/logo.png')}}" alt="wharf">
             <a class="site-title" href="{{ URL::route('home') }}">{{$options->site_title}}</a>
+            <div class="clearfix"></div>
 
             <div class="langs">
                 @foreach(Config::get('app.langs') as $lang => $language)
-                <a href="{{Short::lang($lang)}}">{{$language}}</a>
+                @if(Config::get('app.locale') == $lang)
+                {{$lang}}
+                @else
+                <a href="{{Short::lang($lang)}}">{{$lang}}</a>
+                @endif
                 @endforeach
             </div>
-            
-    		<ul class="nav">
-                @include('parts.nav')
-    		</ul>
+
+            {{Form::open(array('class'=>'search'))}}
+            {{Form::text('search', '',array('class' => 'search-input', 'placeholder' => Lang::get('action.search')))}}
+            {{Form::close()}}
     		
             <div class="clearfix"></div>
     	</div>
@@ -55,13 +60,13 @@
             <div class="btn-group pull-right">
                 <a class="account dropdown-toggle" data-toggle="dropdown" href="#"></a>
                 <ul class="dropdown-menu account-options">
-                    <li><a href="{{ URL::action('UserController@account') }}"><i class="icon-white icon-user"></i>&nbsp;&nbsp;{{Lang::get('page.account')}}</a></li>
-                    <li><a href="{{ URL::action('UserController@logout') }}"><i class="icon-white icon-off"></i>&nbsp;&nbsp;{{Lang::get('action.logout')}}</a></li>
+                    <li><a class="accnt" href="{{ URL::action('UserController@account') }}">{{Lang::get('page.account')}}</a></li>
+                    <li><a class="logout" href="{{ URL::action('UserController@logout') }}">{{Lang::get('action.logout')}}</a></li>
                 </ul>
             </div>
 
             @include('parts.notifications')
-
+            <div class="clearfix"></div>
         </div>
     </div>
     
