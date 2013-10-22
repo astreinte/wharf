@@ -563,6 +563,10 @@ a.error-page-link{
     font-size: 15px;
 }
 
+div.add-alert-form{
+    display: none;
+}
+
 .title-header{
     background: #2E2E2E;
  /* Old browsers */

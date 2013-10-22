@@ -27,4 +27,9 @@ class Notification extends Eloquent {
     {
         return $this->belongsTo('discussion', 'trigger_id');
     }
+
+    public function datemsg()
+    {
+        return $this->belongsTo('datemsg', 'trigger_id');
+    }
 }

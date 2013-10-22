@@ -15,6 +15,11 @@ View::composer(array('layouts.main', 'layouts.fullwidth'), function($view)
     $view->with('options', Option::first());
 });
 
+View::composer(array('home'), function($view)
+{   
+    Event::fire('starting');
+});
+
 View::composer(array('parts.nav', 'parts.footer'), function($view)
 {
     $view->with('pages', Page::orderBy('created_at', 'DESC')->get());

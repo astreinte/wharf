@@ -24,7 +24,6 @@ $(document).ready(function() {
   <div class="btn-toolbar">
     <a class="btn btn-small pull-left" href="{{URL::to('group/edit/'.$group->id)}}"><i class="icon-pencil"></i>&nbsp{{Lang::get('action.edit')}}</a>
     <a class="btn btn-small pull-left" onClick="window.open(logopage,'logo','width=400, height=280');return false;" target="_blank" href="{{URL::to('group/logo/'.$group->id)}}"><i class="icon-picture"></i>&nbsp{{Lang::get('group.logo')}}</a>
-    <a class="btn btn-small pull-left" href="{{URL::route('add-date', array('id' => $group->id))}}"><i class="icon-plus-sign"></i>&nbsp{{Lang::get('date.add')}}</a>
     <a class="btn btn-danger btn-small" href="{{URL::to('group/delete/'.$group->id)}}"><i class="icon-remove icon-white"></i>&nbsp{{Lang::get('action.delete')}}</a>
   </div>
 
@@ -55,6 +54,33 @@ $(document).ready(function() {
     </div>
   </div>
 </div>
+
+
+<div class="well">
+
+  <h2 class="title-header">Prochains rendez-vous</h2>
+
+  <div class="btn-toolbar">
+      <a class="btn btn-small" href="{{URL::route('add-date', array('id' => $group->id))}}"><i class="icon-plus-sign"></i>&nbsp{{Lang::get('date.add')}}</a>
+  </div>
+
+  <ul class="data-list">
+   @if(count($group->dates))
+    @foreach($group->dates as $date)
+    <li><a class="bold" href="#">{{$date->name}}</a><span class="pull-right">
+    @if(Short::timeAgo($date->start, false) == '0 secondes' || Short::timeAgo($date->start, false) == '0 seconds' )
+      {{Lang::get('date.date_format2')}}
+    @else
+    {{Lang::get('date.date_format', array('ago' => Short::timeAgo($date->start, false), 'format' => date('d/m/Y', strtotime($date->start))))}}
+    @endif
+
+</span></li>
+    @endforeach
+   @endif
+  </ul>
+
+</div>
+
 
 <div class="well">
 

@@ -14,7 +14,9 @@ class AdminGroupController extends BaseController {
 			'divisions', 
 			'users', 
 			'projects', 
-			'sectors'
+			'sectors',
+			'dates',
+			'dates.users'
 		))->find($id);
 
 		if(!$group){

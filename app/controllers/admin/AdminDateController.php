@@ -30,7 +30,7 @@ class AdminDateController extends BaseController {
 	 * @param integer
 	 * @return void
 	 */
-	public function addForm($id)
+	public function add($id)
 	{
 		$group = Group::find($id);
 		if(!$group)
@@ -52,6 +52,72 @@ class AdminDateController extends BaseController {
 			return Redirect::back()->withErrors($v)->withInput();
 		}
 
+		$date = new Date();
+		$date->name = Input::get('name');
+
+		$start = DateTime::createFromFormat('d/m/Y', Input::get('start'));
+		$start = $start->format('Y-m-d');
+		$date->start = $start;
+		$date->group_id = $id;
+
+		if(Input::has('street'))
+		{
+			$date->address = Input::get('street');
+		}
+
+		if(Input::has('country'))
+		{
+			$date->country = Input::get('country');
+		}	
+
+
+		if(Input::has('zipcode'))
+		{
+			$date->zipcode = Input::get('zipcode');
+		}
+
+		if(Input::has('city'))
+		{
+			$date->city = Input::get('city');
+		}
+
+		if(Input::has('phone'))
+		{
+			$date->phone = Input::get('phone');
+		}
+
+		$date->save();
+
+		foreach(Input::get('with_a') as $a)
+		{
+			$date->users()->attach($a);
+		}
+
+		foreach(Input::get('with_b') as $b)
+		{
+			$date->users()->attach($b);
+		}
+
+		if(Input::get('add-alert') == true)
+		{
+			$datemsg = new Datemsg();
+
+			if(Input::has('alert-desc'))
+			{
+				$content = Input::get('alert-desc');
+			}
+			else
+			{
+				$content = "RDV";
+			}
+
+			$datemsg->content = $content;
+			$datemsg->type = Input::get('frequency');
+			$datemsg->date_id = $date->id;
+			$datemsg->save();
+		}
+
+			return Redirect::to('group/'.$id.'/'.Str::slug($group->name))->with('success', 'Le rendez-vous a bien été ajouté');
 	}
 
 

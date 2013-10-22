@@ -40,6 +40,6 @@ class Group extends Eloquent {
 
     public function dates()
     {
-        return $this->hasMany('dates');
+        return $this->hasMany('date')->orderBy('start', 'ASC');
     }
 }

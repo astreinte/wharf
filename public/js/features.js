@@ -629,3 +629,42 @@ var switchDiscussions = {
         });
     }
 };
+
+var notify = {
+    config: {
+        trigger : '.notify',
+        container : '.notify-count',
+        url : ''
+    },
+
+    init: function (config) {
+        $.extend(notify.config, config);
+        var c = false;
+        $(notify.config.trigger).click(function(){
+            if(c)
+            {
+                $('.notifications li').removeClass('unchecked');
+            }
+            $(notify.config.container).remove();
+            $.get(notify.config.url);
+            c = true;
+        });
+    }
+};
+
+var showAddAlert = {
+    init: function (config) {
+        $('#add-alert').change(function(){
+            if($(this).is(':checked') )
+            {
+               $(this).val(1);
+               $('.add-alert-form').slideDown();
+            }
+            else
+            {
+                $(this).val(0);
+                $('.add-alert-form').slideUp();
+            }
+        });
+    }
+};

@@ -85,11 +85,18 @@ class Short {
 	 * @param string
 	 * @return string
 	 */
-	public static function timeAgo($ptime)
+	public static function timeAgo($ptime, $ago = true)
 	{
 		$local = Config::get('app.locale');
 
-	    $etime = time() - strtotime($ptime);
+		if($ago)
+		{
+			$etime = time() - strtotime($ptime);
+		}
+		else
+		{
+			$etime = strtotime($ptime) - time();
+		}
 
 	    if ($etime < 1)
 	    {
@@ -238,6 +245,15 @@ class Short {
 		   $a = ' <a href="'.URL::to('project/'.$notif->document->project->id.'/document/'.$notif->document->id).'">'.$notif->document->name.'</a> ';
 		   $c = Lang::get('notification.'.$notif->type, array(
 		   		'file' => $a
+		   ));
+		}
+
+		if($notif->type == 'datemsg')
+		{
+		   $a = ' <a href="'.URL::to('/').'">'.$notif->datemsg->content.'</a> ';
+		   $c = Lang::get('notification.'.$notif->type, array(
+		   		'msg' => $a,
+		   		'date' => $notif->datemsg->date->start
 		   ));
 		}
 

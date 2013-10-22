@@ -54,7 +54,7 @@ class UserController extends BaseController {
 		Mail::send('emails.reminder', $data, function($message) use ($email)
 		{
 			$message->from('wharfremi@gmail.com', 'Extranet Wharf');
-		    $message->to($email, $email)->subject('Wharf Extranet : Votre nouveau mot de passe');
+		    $message->to($email)->subject('Wharf Extranet : Votre nouveau mot de passe');
 		});
 		return Redirect::to('login')->with('reminder_success',true);
 	}

@@ -10,7 +10,7 @@ class Date extends Eloquent {
 
     public function users()
     {
-    	return $this->hasMany('user');
+    	return $this->belongsToMany('user');
     }
 
     public function admins()
@@ -22,4 +22,10 @@ class Date extends Eloquent {
     {
     	return $this->users()->where('role_id', 1);
     }
+
+    public function datemsgs()
+    {
+        return $this->hasMany('datemsg');
+    }
+
 }

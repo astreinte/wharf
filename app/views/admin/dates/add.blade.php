@@ -2,7 +2,12 @@
 @section('content')
 
 <script type="text/javascript">
-	
+	$(document).ready(function(){
+		$('.datepicker').pickadate({
+			format: 'd/m/yyyy'
+		});
+		showAddAlert.init();
+	});
 </script>
 
 <div class="content well">
@@ -15,12 +20,6 @@
 <div class="alert alert-success">{{Lang::get('group.add_success')}}</div>
 @endif
 
-<div class="formpart"> 
-
-	{{ Form::label('type', Lang::get('date.add_type'))}}
-	{{ Form::select('type', array(0 => 'Physique', 1 => "Virtuel"), '', array('class'=>'selectpicker'))}}
-
-</div>
 
 <div class="formpart @if($errors->has('name')) error @endif"> 
 
@@ -33,22 +32,20 @@
 
 </div>
 
-<div class="formpart @if($errors->has('date')) error @endif">
+<div class="formpart @if($errors->has('start')) error @endif">
 
-	{{ Form::label('date', Lang::get('date.add_date'))}}
-	{{Form::text('date', Input::old('date'), array('class' => 'span3'))}} <span class="required">*</span>
+	{{ Form::label('start', Lang::get('date.add_date'))}}
+	{{Form::text('start', Input::old('start'), array('class' => 'datepicker span3'))}} <span class="required">*</span>
 
-	$('.datepicker').pickadate();
-
-	@if($errors->has('date'))
-	<p class="alert alert-error">{{ $errors->first('date') }}</p>
+	@if($errors->has('start'))
+	<p class="alert alert-error">{{ $errors->first('start') }}</p>
 	@endif
 
 </div>
 
 <div class="formpart @if($errors->has('name')) error @endif"> 
 
-	{{ Form::label('with_a', Lang::get('date.add_with_a'))}}
+	{{ Form::label('with_a', Lang::get('date.add_with_a'), array('class'=>'pull-left'))}}<span class="pull-left required">*</span>
 	@foreach($with_a as $a)
 	<p>
 		<input id="with_a-{{$a->id}}" name="with_a[]" value="{{$a->id}}" class="css-checkbox" type="checkbox" />
@@ -64,7 +61,7 @@
 
 <div class="formpart @if($errors->has('name')) error @endif"> 
 
-	{{ Form::label('with_b', Lang::get('date.add_with_b'))}}
+	{{ Form::label('with_b', Lang::get('date.add_with_b'), array('class'=>'pull-left'))}}<span class="pull-left required">*</span>
 	@foreach($with_b as $b)
 	@if(!$b->is_admin())
 	<p>
@@ -80,6 +77,59 @@
 
 </div>
 
+<div class="formpart"> 
+
+	{{ Form::label('street', Lang::get('group.add_address'))}}
+	{{ Form::text('street',Input::old('street'),array('class'=>'span8'))}}
+
+</div>
+
+<div class="formpart"> 
+
+	{{ Form::label('zipcode',  Lang::get('group.add_zip'))}}
+	{{ Form::text('zipcode',Input::old('zipcode'),array('class'=>'span2'))}} 
+
+</div>
+
+<div class="formpart"> 
+
+	{{ Form::label('city', Lang::get('group.add_city'))}}
+	{{ Form::text('city',Input::old('city'),array('class'=>'span4'))}}
+</div>
+
+<div class="formpart"> 
+
+	{{ Form::label('country',  Lang::get('group.add_country'))}}
+	{{ Form::text('country',Input::old('country'),array('class'=>'span4'))}}
+
+</div>
+
+<div class="formpart"> 
+
+	{{ Form::label('phone',  'Téléphone')}}
+	{{ Form::text('phone',Input::old('phone'),array('class'=>'span4'))}}
+	
+</div>
+
+<div class="formpart"> 
+
+	<p>
+		<input id="add-alert" name="add-alert" value="0" class="css-checkbox" type="checkbox" />
+		<label for="add-alert" style="font-weight:bold" class="css-label">Ajouter une alerte</label>
+	</p>
+
+</div>
+
+<div class="add-alert-form">
+	<div class="formpart">
+		{{Form::label('alert-desc', Lang::get('date.add_alert'))}}
+		<textarea class="span8"  placeholder="{{Lang::get('date.add_rdv')}}" name="alert-desc"></textarea>
+	</div>
+	<div class="formpart">
+		{{Form::label('frequency', Lang::get('date.add_falert'))}}
+		{{Form::select('frequency', array('daily' => 'Tous les jours', 'weekly' => "Toutes les semaines", 'monthly' => "Tous les mois"), '', array('class'=>'selectpicker'))}}
+	</div>
+</div>
 <p>{{ Form::submit(Lang::get('action.add'), array('class'=>"btn submit btn-small btn-success")) }}</p>
 
 {{ Form::close() }}

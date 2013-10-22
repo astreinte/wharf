@@ -13,6 +13,73 @@
 
 Event::listen('starting', function()
 {
+
+    $types = array(
+        'daily' => 60*60*24,
+        'weekly'=> 60*60*24*7,
+        'monthly' =>60*60*24*7*30
+    );
+
+    $msgs = Datemsg::all();
+
+    foreach($msgs as $msg)
+    {
+        $date = $msg->date;
+        $d = strtotime($date->start);
+        $t = time();
+        $passed = $d - $t;
+        
+        if($passed<=0)
+        {
+            continue;
+        }
+
+        if($msg->last == NULL)
+        {
+            $last = strtotime($msg->created_at);
+        }
+        else
+        {
+            $last = $msg->last;
+        }
+
+        if($t >= $types[$msg->type] + $last)
+        {
+            
+            $msg->last = $t;
+            $msg->save();
+
+            $notification = new Notification();
+            $notification->type = 'datemsg';
+            $notification->trigger_id = $msg->id;
+            $notification->save();
+
+            foreach($msg->date->admins as $user)      
+            {
+              $user->notifications()->attach($notification->id);
+
+              $data=array(
+                'firstname' => $user->profile->firstname,
+                'lastname' => $user->profile->lastname,
+                'msg' => $msg,
+                'email' => $user->email,
+                'msg-content' => $msg->content,
+                'date-name' => $msg->date->name,
+
+
+                );
+
+                Mail::send('emails.date', $data, function($message) use ($data)
+                {
+                    $message->from('wharfremi@gmail.com', 'Extranet Wharf');
+                    $message->to($data['email'], $data['firstname'].' '.$data['lastname'])->subject('Rappel : '.$data['msg-content'].' / '.$data['date-name']);
+                }); 
+
+            }
+        }
+
+    }
+
     /*
     $documents = Document::with('users', 'comments', 'comments.user')->get();
 
@@ -67,6 +134,7 @@ Event::listen('user.created', function($user, $password, $profile)
     $data=array(
 		'firstname' => $profile->firstname,
 		'lastname' => $profile->lastname,
+        'email' => $user->email,
 		'login' => $user->username,
 		'password' => $password,
         'options' => Option::first()
@@ -74,7 +142,7 @@ Event::listen('user.created', function($user, $password, $profile)
 	Mail::send('emails.newuser', $data, function($message) use ($data)
 	{
 		$message->from('wharfremi@gmail.com', 'Extranet Wharf');
-		$message->to('wharfremi@gmail.com', $data['firstname'].' '.$data['lastname'])->subject($data['options']->site_title.' : Votre compte utilisateur a bien été créé');
+		$message->to($date['email'], $data['firstname'].' '.$data['lastname'])->subject($data['options']->site_title.' : Votre compte utilisateur a bien été créé');
 	});
 });
 

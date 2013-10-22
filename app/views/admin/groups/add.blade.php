@@ -52,6 +52,12 @@ $(document).ready(function() {
 	<p class="group-add-action"><a class="btn btn-inverse btn-small">{{Lang::get('group.add_division')}}</a></p>
 </div>
 
+<div class="formpart"> 
+	{{ Form::label('', 'Prospect')}}
+	<input id="oui" name="oui" value="1" class="css-checkbox" type="checkbox" />
+	<input id="non" name="non" value="0" class="css-checkbox" type="checkbox" />
+</div>
+
 @if(count($sectors))
 <div class="formpart"> 
 	{{ Form::label('', Lang::get('group.add_sectors'))}}
