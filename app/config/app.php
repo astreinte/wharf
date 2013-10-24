@@ -118,9 +118,10 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
+		'Digithis\Activehelper\ActivehelperServiceProvider',
+		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 
 	),
 
@@ -186,9 +187,10 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Breadcrumbs'     => 'DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs',
 		'Image' => 'Intervention\Image\Facades\Image',
 		'PDF' => 'Barryvdh\DomPDF\Facade',
+		'Active'  => 'Digithis\Activehelper\ActiveFacade',
+		'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
 	),
 
 );

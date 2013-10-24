@@ -78,7 +78,8 @@ class AdminPageController extends BaseController {
 
 	 	return View::make('admin.pages.edit')->with(array(
 	 		'title' => $page->title,
-	 		'page'  => $page
+	 		'page'  => $page,
+	 		'breadcrumb' => array('edit-page', array($page))
 	 	));
 	 }
 

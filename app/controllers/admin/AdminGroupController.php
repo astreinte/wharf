@@ -25,7 +25,8 @@ class AdminGroupController extends BaseController {
 
 		return View::make('admin.groups.index')->with(array(
 			'title' => $group->name,
-			'group' => $group
+			'group' => $group,
+			'breadcrumb' => array('group', array($group))
 		));
 	}
 
@@ -38,10 +39,13 @@ class AdminGroupController extends BaseController {
 	{
 		$divisions = Divisioninfo::all();
 		$sectors = Sector::all();
+		$title = Lang::get('group.add_action');
+
 		return View::make('admin.groups.add')->with(array(
-				'title' => Lang::get('group.add_action'),
+				'title' => $title,
 				'divisions' => $divisions,
-				'sectors' => $sectors
+				'sectors' => $sectors,
+				'breadcrumb' => 'add-group'
 		));
 	}
 
@@ -154,8 +158,9 @@ class AdminGroupController extends BaseController {
 			'divisions'
 		))->with('users.profile')->paginate(5);
 
+		$title = Lang::get('page.groups');
 		return \View::make('admin.groups.all')->with(array(
-			'title' => Lang::get('page.groups'),
+			'title' => $title,
 			'groups' => $groups
 		));
 	}
@@ -176,10 +181,11 @@ class AdminGroupController extends BaseController {
 		$sectors = Sector::all();
 
 		return View::make('admin.groups.edit')->with(array(
-			'title' => $group->name,
+			'title' => 'Editer '.$group->name,
 			'address' => $address,
 			'group' => $group,
-			'sectors' => $sectors
+			'sectors' => $sectors,
+			'breadcrumb' => array('edit-group', array($group))
 		));
 	}
 
@@ -314,7 +320,7 @@ class AdminGroupController extends BaseController {
 		$logo = Input::file('file');
 		$extension = $logo->getClientOriginalExtension();
 		$filesave = $group->name.'-'.uniqid().'.'.$extension;
-		$logo = Image::make($logo->getRealPath())->resize(100, null, true)->save(public_path().$path.$filesave);
+		$logo = Image::make($logo->getRealPath())->resize(180, null, true)->save(public_path().$path.$filesave);
 
 		$group->logo = URL::to('/').$path.$filesave;
 		$group->save();

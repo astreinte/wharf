@@ -17,7 +17,8 @@ class AdminDivisionController extends BaseController {
 
 		return View::make('admin.divisions.index')->with(array(
 			'title' => $division->name,
-			'division' => $division
+			'division' => $division,
+			'breadcrumb' => array('division', array($division))
 		));
 	 	
 	 }

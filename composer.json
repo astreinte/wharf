@@ -4,9 +4,10 @@
 	"keywords": ["framework", "laravel"],
 	"require": {
 		"laravel/framework": "4.0.*",
-		"davejamesmiller/laravel-breadcrumbs": "dev-master",
 		"intervention/image": "dev-master",
-		"barryvdh/laravel-dompdf": "dev-master"
+		"barryvdh/laravel-dompdf": "dev-master",
+		"digithis/activehelper": "dev-master",
+		"davejamesmiller/laravel-breadcrumbs": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

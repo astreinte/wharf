@@ -45,6 +45,7 @@ class AdminProjectController extends BaseController {
 
 		return View::make('admin.projects.add')
 		->with('title', Lang::get('project.add'))
+		->with('breadcrumb', 'add-project')
 		->with($data);
 	}
 

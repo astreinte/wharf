@@ -13,15 +13,15 @@ $(document).ready(function() {
 
 <div class="well">
 
-  {{ Breadcrumbs::render('project', $project) }}
+  <h2>{{$title}}</h2>
 
   @if (Session::has('success'))
   <div class="alert alert-success">{{Session::get('success')}}</div>
   @endif
 
   <div class="btn-toolbar">
-    <a class="btn btn-small pull-left" href="{{URL::to('project/edit/'.$project->id)}}"><i class="icon-pencil"></i>&nbsp{{Lang::get('action.edit')}}</a>
-    <a class="btn btn-danger btn-small" href="{{URL::to('project/delete/'.$project->id)}}"><i class="icon-remove icon-white"></i>&nbsp{{Lang::get('action.delete')}}</a>
+    <a class="btn pull-left" href="{{URL::to('project/edit/'.$project->id)}}"><i class="icon-pencil"></i>&nbsp{{Lang::get('action.edit')}}</a>
+    <a class="btn btn-danger" href="{{URL::to('project/delete/'.$project->id)}}"><i class="icon-remove icon-white"></i>&nbsp{{Lang::get('action.delete')}}</a>
   </div>
 
   <h2 class="contained entity">{{$project->name}}</h2>

@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    "welcome" 		=> "Bonjour :name (:status), bienvenue sur votre extranet.",
+    "welcome" 		=> "Bonjour :name, bienvenue sur votre extranet client.",
     "searching" 	=> "Recherche en cours...",
     "no_results"	=> "Pas de résultats pour cette recherche.",
     "loading" 		=> "Chargement en cours...",

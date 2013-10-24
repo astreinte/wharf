@@ -2,7 +2,8 @@
 
 // Pages
 Route::get('page/add', array('as' => 'add-page', function(){
-	return View::make('admin.pages.add');
+	return View::make('admin.pages.add')
+	->with('title', 'Nouvelle page');
 }));
 
 Route::get('pages', array('as' => 'pages', 'uses' => 'AdminPageController@pages'));

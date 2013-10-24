@@ -22,7 +22,8 @@ class ProjectController extends BaseController {
 		{
 			return View::make('admin.projects.index')->with(array(
 				'title' => $project->name,
-				'project' => $project
+				'project' => $project,
+				'breadcrumb' => array('project', array($project))
 			));
 		}
 		else

@@ -23,14 +23,14 @@ $(document).ready(function() {
 
 <div class="content well">
 
-{{ Breadcrumbs::render('projects') }}
+<h2>{{$title}}</h2>
 
 @if (Session::has('success'))
 <div class="alert alert-success">{{Session::get('success')}}</div>
 @endif
 
 <div class="btn-toolbar">
-    <a style="margin-right:10px" href="{{URL::to('project/add')}}" class="btn pull-left btn-small"><i class="icon-plus"></i>&nbsp{{Lang::get('project.add')}}</a>
+    <a style="margin-right:10px" href="{{URL::to('project/add')}}" class="btn btn-inverse pull-left"><i class="icon-plus icon-white"></i>&nbsp{{Lang::get('project.add')}}</a>
     <select>
       <option value="default">{{Lang::get('project.sort_project_group')}}</option>
       @foreach($groups as $group)
