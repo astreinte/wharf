@@ -35,6 +35,7 @@ class AdminUserController extends BaseController {
 
 		return View::make('admin.users.add')
 		->with('title', Lang::get('user.add'))
+		->with('breadcrumb', 'add-user')
 		->with($data);
 	}
 
@@ -130,6 +131,7 @@ class AdminUserController extends BaseController {
 		return View::make('admin.users.edit')
 		->with('title', $user->profile->firstname.' '.$user->profile->lastname)
 		->with('user',$user)
+		->with('breadcrumb', array('edit-user', array($user)))
 		->with($data);
 	}
 

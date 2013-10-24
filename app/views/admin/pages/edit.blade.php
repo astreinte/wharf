@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 <div class="content well">
 
-{{ Breadcrumbs::render('edit-page', $page) }}
+<h2>{{$title}}</h2>
 
 <div class="btn-toolbar">
 	<div class="btn-group">

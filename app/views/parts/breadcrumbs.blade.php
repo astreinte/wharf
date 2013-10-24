@@ -1,16 +1,18 @@
 @if ($breadcrumbs)
-    <ul class="breadcrumb title-header">
-        @foreach ($breadcrumbs as $breadcrumb)
-            @if (!$breadcrumb->last)
-                <li>
-                    <a href="{{{ $breadcrumb->url }}}">{{{ $breadcrumb->title }}}</a>
-                    <span class="divider">/</span>
-                </li>
-            @else
-                <li class="active">
-                    <h2>{{{ $breadcrumb->title }}}</h2>
-                </li>
-            @endif
-        @endforeach
-    </ul>
+    <div class="breadcrumb">
+        <?php 
+        $c = count($breadcrumbs);
+        if($c>1)
+        {   
+               
+        $breadcrumb = $breadcrumbs[$c - 2];
+
+        ?>
+           @if ($breadcrumb->url && !$breadcrumb->last)
+                <a href="{{{ $breadcrumb->url }}}">&#8592;&nbsp{{{ $breadcrumb->title }}}</a>
+           @endif
+        <?php
+        }
+        ?>
+    </div>
 @endif

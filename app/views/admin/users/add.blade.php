@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 <div class="content well">
 
-{{ Breadcrumbs::render('add-user') }}
+<h2>{{$title}}</h2>
 
 {{ Form::open(array('class'=>'form-horizontal')) }}
 
@@ -98,7 +98,7 @@ $(document).ready(function() {
 	
 </div>
 
-<p>{{ Form::submit(Lang::get('action.add'), array('class'=>"btn submit btn-small btn-success")) }}</p>
+<p>{{ Form::submit(Lang::get('action.add'), array('class'=>"btn submit btn-inverse")) }}</p>
 
 {{ Form::close() }}
 

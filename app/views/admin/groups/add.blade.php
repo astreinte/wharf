@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 <div class="content well">
 
-{{ Breadcrumbs::render('add-group') }}
+<h2>{{$title}}</h2>
 
 {{ Form::open(array('class'=>'form-horizontal')) }}
 
@@ -49,7 +49,7 @@ $(document).ready(function() {
 		{{ Form::text('division-name','',array('class'=>'span4'))}}
 		<label for="division-name" class="minilabel">{{Lang::get('group.add_division_name')}}</label>
 	</div>
-	<p class="group-add-action"><a class="btn btn-inverse btn-small">{{Lang::get('group.add_division')}}</a></p>
+	<p class="group-add-action"><a class="btn btn-info">{{Lang::get('group.add_division')}}</a></p>
 </div>
 
 <div class="formpart"> 
@@ -119,7 +119,7 @@ $(document).ready(function() {
 	
 </div>
 
-<p>{{ Form::submit(Lang::get('action.add'), array('class'=>"btn submit btn-small btn-success")) }}</p>
+<p>{{ Form::submit(Lang::get('action.add'), array('class'=>"btn submit btn-inverse")) }}</p>
 
 {{ Form::close() }}
 

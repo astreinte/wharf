@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 <div class="content well">
 
-  {{ Breadcrumbs::render('division', $division) }}
+  <h2>{{$title}}</h2>
 
   @if (Session::has('success'))
   <div class="alert alert-success">{{Session::get('success')}}</div>

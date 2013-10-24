@@ -18,8 +18,9 @@ class AdminLocationController extends BaseController {
 		}
 
 		return View::make('admin.divisions.locations.add')->with(array(
-			'title' => $division->name,
-			'division' => $division
+			'title' => $division->name.' : '.'Nouvelle adresse',
+			'division' => $division,
+			'breadcrumb' => array('add-division-location', array($division))
 		));
 	}
 

@@ -55,7 +55,7 @@
     <div class="title">
         <div class="container">
 
-            <h1 class="pull-left span6">{{Lang::get('messages.welcome', array('name' => '<span class="username">'.Auth::user()->profile->firstname.'</span>', 'status' => Auth::user()->role->name ))}}</h1>
+            <h1 class="pull-left span6">{{Lang::get('messages.welcome', array('name' => '<span class="username">'.Auth::user()->profile->firstname.'</span>'))}}</h1>
 
             <div class="btn-group pull-right">
                 <a class="account dropdown-toggle" data-toggle="dropdown" href="#"></a>

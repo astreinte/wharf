@@ -7,54 +7,48 @@ var logopage = "<?php echo URL::to('group/logo/'.$group->id); ?>";
 $(document).ready(function() {
   var base_url = '<?php echo Request::root(); ?>';
   divisionUpload.init({'url' : base_url+'/group/division/'+<?php echo $group->id ?>+'/add/'});
-  var h = $('.group-logo').height() + 10;
-  $('.info-group').css('min-height', h);
 });
 
 </script>
 
-<div class="well" style="padding-bottom:10px">
-
-  {{ Breadcrumbs::render('group', $group) }}
+<div class="well pull-left span7" style="padding-bottom:10px">
+ <h2>{{$title}}</h2>
 
   @if (Session::has('success'))
   <div class="alert alert-success">{{Session::get('success')}}</div>
   @endif
 
   <div class="btn-toolbar">
-    <a class="btn btn-small pull-left" href="{{URL::to('group/edit/'.$group->id)}}"><i class="icon-pencil"></i>&nbsp{{Lang::get('action.edit')}}</a>
-    <a class="btn btn-small pull-left" onClick="window.open(logopage,'logo','width=400, height=280');return false;" target="_blank" href="{{URL::to('group/logo/'.$group->id)}}"><i class="icon-picture"></i>&nbsp{{Lang::get('group.logo')}}</a>
-    <a class="btn btn-danger btn-small" href="{{URL::to('group/delete/'.$group->id)}}"><i class="icon-remove icon-white"></i>&nbsp{{Lang::get('action.delete')}}</a>
+    <a class="btn btn-inverse pull-left" href="{{URL::to('group/edit/'.$group->id)}}"><i class="icon-pencil icon-white"></i>&nbsp{{Lang::get('action.edit')}}</a>
+    <a class="btn btn-info pull-left" onClick="window.open(logopage,'logo','width=400, height=280');return false;" target="_blank" href="{{URL::to('group/logo/'.$group->id)}}"><i class="icon-picture icon-white"></i>&nbsp{{Lang::get('group.logo')}}</a>
+    <a class="btn btn-danger" href="{{URL::to('group/delete/'.$group->id)}}"><i class="icon-remove icon-white"></i>&nbsp{{Lang::get('action.delete')}}</a>
   </div>
 
   <div class="group-area">
-    <div class="group-logo">
-        @if($group->logo)
-        <img class="border-img" src="{{$group->logo}}"/>
-        @if(Auth::user()->is_admin())
-        <a style="display:block;" class="btn btn-small" onClick="window.open(logopage,'logo','width=400, height=280');return false;" target="_blank" href="{{URL::to('group/logo/'.$group->id)}}"><i class="icon-pencil"></i>&nbsp{{Lang::get('action.edit')}}</a>
-        @endif
-        @endif
-    </div>
 
-    <div class="span7 info-group">
-      <h2 class="contained entity">{{$group->name}}</h2>
-      <p class="contained">{{$group->description}}</p>
-      <div class="clearfix"></div>
-      <div class="adresse" class="clearfix contained bold span7">
-      <p>{{$group->location()->street}}, {{$group->location()->zip}}, {{$group->location()->city}}, {{$group->location()->country}}
+    <div class="info-group">
+      <p class="group-description">{{$group->description}}</p>
+      <p class="adresse">
+        {{$group->location()->street}}, {{$group->location()->zip}}, {{$group->location()->city}}, {{$group->location()->country}}
       </p>
-      </div>
     </div>
     <div class="clearfix"></div>
-    <div class="contained">
       @foreach($group->sectors as $sector)
         <a href="#" class="tag">{{$sector->name}}</a>
       @endforeach
-    </div>
   </div>
 </div>
 
+<div class="group-logo pull-right span2">
+        @if($group->logo)
+        <img class="border-img" src="{{$group->logo}}"/>
+        @if(Auth::user()->is_admin())
+        <a style="display:block;" class="btn btn-inverse" onClick="window.open(logopage,'logo','width=400, height=280');return false;" target="_blank" href="{{URL::to('group/logo/'.$group->id)}}"><i class="icon-pencil icon-white"></i>&nbsp{{Lang::get('action.edit')}}</a>
+        @endif
+        @endif
+</div>
+
+<div class="clearfix"></div>
 
 <div class="well">
 

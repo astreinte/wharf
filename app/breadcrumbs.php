@@ -87,7 +87,7 @@ Breadcrumbs::register('add-group',function($breadcrumbs)
 
 Breadcrumbs::register('edit-group',function($breadcrumbs, $group)
 {
-	$breadcrumbs->parent('groups');
+	$breadcrumbs->parent('group', $group);
 	$breadcrumbs->push($group->name, route('edit-group', $group->id));
 });
 

@@ -12,14 +12,14 @@ $(document).ready(function() {
 
 <div class="content well">
 
-{{ Breadcrumbs::render('users') }}
+<h2>{{$title}}</h2>
 
 @if (Session::has('success'))
 <div class="alert alert-success">{{Session::get('success')}}</div>
 @endif
 
 <div class="btn-toolbar">
-    <a href="{{URL::to('user/add')}}" class="btn pull-left btn-small"><i class="icon-plus"></i>&nbsp{{Lang::get('user.add')}}</a>
+    <a href="{{URL::to('user/add')}}" class="btn btn-inverse pull-left"><i class="icon-plus icon-white"></i>&nbsp{{Lang::get('user.add')}}</a>
     {{Form::text('search', '', array('class'=>'pull-right span4 quick-search', 'placeholder'=> Lang::get('action.search')))}}
     <div class="clearfix"></div>
 </div>

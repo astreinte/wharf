@@ -16,10 +16,10 @@ $(document).ready(function() {
 
 <div class="content well">
 
-{{ Breadcrumbs::render('edit-user', $user) }}
+<h2>{{$title}}</h2>
 
 <div class="btn-toolbar">
-	<a class="btn btn-danger btn-small" href="{{URL::to('user/delete/'.$user->id)}}">{{Lang::get('action.delete')}}</a>
+	<a class="btn btn-danger" href="{{URL::to('user/delete/'.$user->id)}}">{{Lang::get('action.delete')}}</a>
 </div>
 
 {{ Form::open(array('class'=>'form-horizontal')) }}
@@ -124,7 +124,7 @@ $(document).ready(function() {
 
 </div>
 
-<p>{{ Form::submit(Lang::get('action.save'), array('class'=>"btn submit btn-small btn-success")) }}</p>
+<p>{{ Form::submit(Lang::get('action.save'), array('class'=>"btn submit btn-success")) }}</p>
 
 {{ Form::close() }}
 

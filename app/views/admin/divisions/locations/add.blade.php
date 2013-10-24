@@ -3,7 +3,7 @@
 
 <div class="content well">
 
-{{ Breadcrumbs::render('add-division-location', $division) }}
+<h2>{{$title}}</h2>
 
 {{ Form::open(array('class'=>'form-horizontal')) }}
 
