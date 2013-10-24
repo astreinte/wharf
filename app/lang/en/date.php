@@ -11,5 +11,6 @@ return array(
  	"add_alert"   => "Add an alert",
  	"add_falert"  => "Frequency of this alert",
  	"add_rdv"     => "Appointment",
-	"date_format" => "In :ago - :format"
+	"date_format" => "In :ago - :format",
+	"date_title" => "Next appointment"
 );

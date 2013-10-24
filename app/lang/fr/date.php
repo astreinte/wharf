@@ -12,5 +12,6 @@ return array(
  	"add_rdv"     => "Rendez-vous",
  	"add_comment" => "Commentaire de l'entretien",
  	"date_format" => "Dans :ago - :format",
- 	"date_format2" => "Rendez-vous terminé"
+ 	"date_format2" => "Rendez-vous terminé",
+ 	"date_title" => "Prochain rendez-vous"
 );

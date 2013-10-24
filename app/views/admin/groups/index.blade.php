@@ -58,7 +58,7 @@ $(document).ready(function() {
 
 <div class="well">
 
-  <h2 class="title-header">Prochains rendez-vous</h2>
+  <h2 class="title-header">{{Lang::get('date.date_title')}}</h2>
 
   <div class="btn-toolbar">
       <a class="btn btn-small" href="{{URL::route('add-date', array('id' => $group->id))}}"><i class="icon-plus-sign"></i>&nbsp{{Lang::get('date.add')}}</a>
