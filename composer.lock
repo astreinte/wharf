@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "a5898c3ef99b2825c4e6fc0b7733f55a",
+    "hash": "27bb7c0d6854b2ef9e596f88af7033ee",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -471,30 +471,35 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "2.4.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "9efdbcebea17506fb1cdb6b4687c23a6786d2e6b"
+                "reference": "0e4de6bab9c0b7cfde3e5d1faedb0a68e9c1e08a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/9efdbcebea17506fb1cdb6b4687c23a6786d2e6b",
-                "reference": "9efdbcebea17506fb1cdb6b4687c23a6786d2e6b",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0e4de6bab9c0b7cfde3e5d1faedb0a68e9c1e08a",
+                "reference": "0e4de6bab9c0b7cfde3e5d1faedb0a68e9c1e08a",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "~2.4",
+                "doctrine/common": "2.4.*",
                 "php": ">=5.3.2"
             },
             "require-dev": {
                 "phpunit/phpunit": "3.7.*",
-                "symfony/console": "~2.0"
+                "symfony/console": "2.*"
             },
             "suggest": {
                 "symfony/console": "Allows use of the command line interface"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Doctrine\\DBAL\\": "lib/"
@@ -532,7 +537,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2013-09-26 21:18:07"
+            "time": "2013-10-23 04:32:37"
         },
         {
             "name": "doctrine/inflector",
@@ -894,12 +899,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "1dd5eb268e2b1ad8d0a45ece8aa7b22ee99ab30d"
+                "reference": "54517e252c98fffb5f2b6555608ebfa01eebc72f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/1dd5eb268e2b1ad8d0a45ece8aa7b22ee99ab30d",
-                "reference": "1dd5eb268e2b1ad8d0a45ece8aa7b22ee99ab30d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/54517e252c98fffb5f2b6555608ebfa01eebc72f",
+                "reference": "54517e252c98fffb5f2b6555608ebfa01eebc72f",
                 "shasum": ""
             },
             "require": {
@@ -999,7 +1004,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2013-10-22 01:45:48"
+            "time": "2013-10-24 01:58:28"
         },
         {
             "name": "monolog/monolog",
@@ -1007,12 +1012,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "620922356a36d8903d213c986568fe159b530747"
+                "reference": "c600461b0f1a8943696f931fc11db475193f62cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/620922356a36d8903d213c986568fe159b530747",
-                "reference": "620922356a36d8903d213c986568fe159b530747",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c600461b0f1a8943696f931fc11db475193f62cd",
+                "reference": "c600461b0f1a8943696f931fc11db475193f62cd",
                 "shasum": ""
             },
             "require": {
@@ -1062,7 +1067,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-10-16 16:27:10"
+            "time": "2013-10-24 12:32:52"
         },
         {
             "name": "nesbot/carbon",

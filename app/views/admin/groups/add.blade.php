@@ -54,9 +54,8 @@ $(document).ready(function() {
 
 <div class="formpart"> 
 	{{ Form::label('', 'Prospect')}}
-	<input id="oui" name="oui" value="1" class="css-checkbox" type="checkbox" />
-	<input id="non" name="non" value="0" class="css-checkbox" type="checkbox" />
-	<label for="" class="css-label"></label>
+	<input id="prospect" name="prospect" value="1" class="css-checkbox" type="checkbox" />
+	<label for="prospect" class="css-label"> oui</label>
 </div>
 
 @if(count($sectors))

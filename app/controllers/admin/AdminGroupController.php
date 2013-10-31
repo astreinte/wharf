@@ -76,6 +76,10 @@ class AdminGroupController extends BaseController {
 		$group = new Group();
 		$group->name = ucfirst(Input::get('name'));
 		$group->description = Input::get('description');
+		if(Input::has('prospect'))
+		{
+			$group->prospect = true;
+		}
 		$group->save();
 
 		$address = new Location();
